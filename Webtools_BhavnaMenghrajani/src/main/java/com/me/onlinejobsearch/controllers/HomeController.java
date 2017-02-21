@@ -20,17 +20,12 @@ import com.me.onlinejobsearch.pojo.User;
 @Controller
 public class HomeController {
 
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String startForm(Locale locale, Model model) {
 
 		return "JobSearchMain";
-		//return "testjsp";
 	}
 
-	
 	@RequestMapping(value="/Logout.htm", method=RequestMethod.GET)
 	public String logout(HttpServletRequest request)
 	
@@ -38,27 +33,18 @@ public class HomeController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "JobSearchMain";
-		
-		
 	}
-	
 	
 	@RequestMapping(value = "/JobSearchMain.htm", method = RequestMethod.GET)
 	public String homePage(Locale locale, Model model) {
 
 		return "JobSearchMain";
 	}
-	
-	
-	
-	
+
 	@RequestMapping(value = "/AcademicDetails.htm", method = RequestMethod.GET)
 	public String academicDetails(Locale locale, Model model) {
 
 		return "AcademicDetails";
 	}
-	
-	
-	
 	
 }

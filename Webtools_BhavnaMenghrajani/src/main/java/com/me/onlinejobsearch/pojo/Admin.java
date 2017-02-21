@@ -27,8 +27,6 @@ public class Admin extends User{
 		
 	}
 	
-	
-	
 	public Admin(String firstName, String lastName, String userName, String password,String userType, String adminType)
 	{
 		

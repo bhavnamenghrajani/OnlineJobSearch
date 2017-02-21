@@ -96,15 +96,11 @@ public class JobSeekerController {
 		}
 	}
 
-	
-	
-	
 	@RequestMapping(value = "/ApplyJob.htm", method = RequestMethod.GET)
 	public ModelAndView applyJob(@RequestParam("jobID") String jobID, HttpServletRequest request) {
 
 		JobSeeker jobSeeker = (JobSeeker) request.getSession().getAttribute("loggedUser");
 
-		
 		if (jobSeeker != null) {
 
 			int applicationID = jobDAO.checkApplicationExists(jobSeeker, jobID);
@@ -123,7 +119,6 @@ public class JobSeekerController {
 			}
 		} else {
 			ModelAndView mv = new ModelAndView();
-			// mv.addObject("appList", appList);
 			mv.setViewName("JobSearchMain");
 			return mv;
 		}
@@ -142,7 +137,6 @@ public class JobSeekerController {
 			return mv;
 		} else {
 			ModelAndView mv = new ModelAndView();
-			// mv.addObject("appList", appList);
 			mv.setViewName("JobSearchMain");
 			return mv;
 

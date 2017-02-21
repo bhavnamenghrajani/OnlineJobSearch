@@ -8,36 +8,35 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="UserCategory")
+@Table(name = "UserCategory")
 public class UserCategory {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="UserCategoryId", unique = true, nullable = false)
+	@Column(name = "UserCategoryId", unique = true, nullable = false)
 	private int userCategoryId;
-	
-	@Column(name="CategoryName")
+
+	@Column(name = "CategoryName")
 	private String categoryName;
-	
-	public UserCategory()
-	{
-		
-		
+
+	public UserCategory() {
+
 	}
-	
-	
+
 	public int getUserCategoryId() {
 		return userCategoryId;
 	}
+
 	public void setUserCategoryId(int userCategoryId) {
 		this.userCategoryId = userCategoryId;
 	}
+
 	public String getCategoryName() {
 		return categoryName;
 	}
+
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
 
 }

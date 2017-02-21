@@ -22,7 +22,7 @@ public class JobApplication {
 	@GeneratedValue
 	@Column(name = "applicationID", unique = true, nullable = false)
 	private int applicationID;
-	
+
 	@Column(name = "currentStatus")
 	private String currentStatus;
 
@@ -30,36 +30,31 @@ public class JobApplication {
 		return currentStatus;
 	}
 
-	public JobApplication()
-	{
-		
+	public JobApplication() {
+
 	}
 
 	public void setCurrentStatus(String currentStatus) {
 		this.currentStatus = currentStatus;
 	}
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="jobID")
-    private Job job;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="userId")
-    private JobSeeker jobSeeker;
-    
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobApplication")
-    private Set<ApplicationStatus> applicationStatus = new HashSet<ApplicationStatus>();
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "jobID")
+	private Job job;
 
-	
-	public JobApplication(Job job, JobSeeker jobSeeker)
-	{
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId")
+	private JobSeeker jobSeeker;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "jobApplication")
+	private Set<ApplicationStatus> applicationStatus = new HashSet<ApplicationStatus>();
+
+	public JobApplication(Job job, JobSeeker jobSeeker) {
 		this.job = job;
 		this.jobSeeker = jobSeeker;
-		
-		
+
 	}
-	
-	
+
 	public int getApplicationID() {
 		return applicationID;
 	}
@@ -84,14 +79,12 @@ public class JobApplication {
 		this.jobSeeker = jobSeeker;
 	}
 
-public Set<ApplicationStatus> getApplicationStatus() {
+	public Set<ApplicationStatus> getApplicationStatus() {
 		return applicationStatus;
 	}
 
 	public void setApplicationStatus(Set<ApplicationStatus> applicationStatus) {
 		this.applicationStatus = applicationStatus;
-	}	
-
-
+	}
 
 }

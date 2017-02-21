@@ -85,11 +85,10 @@ public class AcademicDetailsController {
 	}
 
 	@RequestMapping(value = "/EditAD.htm", method = RequestMethod.GET)
-	public String handlingCode3()
-	{
+	public String handlingCode3() {
 		return "JobSearchMain";
 	}
-	
+
 	@RequestMapping(value = "/EditAD.htm", method = RequestMethod.POST)
 	public ModelAndView editADintoDB(@ModelAttribute("academicDetails") AcademicDetails academicDetails,
 			BindingResult result, @RequestParam("ID") String ID, HttpServletRequest request) {
@@ -100,21 +99,18 @@ public class AcademicDetailsController {
 			mv.addObject("academicDetails", academicDetails);
 			mv.setViewName("AcademicDetails");
 			return mv;
-			// return "AcademicDetails";
+
 		}
 
-		// int id= professionalDetails.getProfessionalDetailsID();
-		System.out.println("recieved :" + ID);
 		JobSeeker jobSeeker = (JobSeeker) request.getSession().getAttribute("loggedUser");
 
-		// professionalDetails.setJobSeeker(jobSeeker);
 		userDAO.editAcademicDetails(Integer.parseInt(ID), academicDetails.getEducationLevel(),
-				academicDetails.getFieldOfStudy(), academicDetails.getGpa(), academicDetails.getGraduated(),
-				academicDetails.getSchoolAddress(), academicDetails.getSchoolName(), academicDetails.getStartYear(),
-				academicDetails.getEndYear());
+		academicDetails.getFieldOfStudy(), academicDetails.getGpa(), academicDetails.getGraduated(),
+		academicDetails.getSchoolAddress(), academicDetails.getSchoolName(), academicDetails.getStartYear(),
+		academicDetails.getEndYear());
 
 		List list = userDAO.getAcademicDetails(jobSeeker);
-		// return list;
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("academicDetailsList", list);
 		mv.setViewName("ViewAcademicDetails");
@@ -130,14 +126,12 @@ public class AcademicDetailsController {
 		if (jobSeeker != null) {
 
 			List list = userDAO.getAcademicDetails(jobSeeker);
-			// return list;
 			ModelAndView mv = new ModelAndView();
 			mv.addObject("academicDetailsList", list);
 			mv.setViewName("ViewAcademicDetails");
 			return mv;
 		} else {
 			ModelAndView mv = new ModelAndView();
-			// mv.addObject("academicDetailsList", list);
 			mv.setViewName("JobSearchMain");
 			return mv;
 
@@ -156,20 +150,17 @@ public class AcademicDetailsController {
 			return "JobSearchMain";
 		}
 	}
-	
+
 	@RequestMapping(value = "/addMoreAcademicDetails.htm", method = RequestMethod.GET)
-	public String handlingCode2()
-	{
+	public String handlingCode2() {
 		return "JobSearchMain";
-		
+
 	}
-	
-	
+
 	@RequestMapping(value = "/addAD.htm", method = RequestMethod.GET)
-	public String handlingCode1()
-	{
+	public String handlingCode1() {
 		return "JobSearchMain";
-		
+
 	}
 
 	@RequestMapping(value = "/addAD.htm", method = RequestMethod.POST)
@@ -177,40 +168,24 @@ public class AcademicDetailsController {
 			BindingResult result, HttpServletRequest request) {
 
 		JobSeeker jobSeeker = (JobSeeker) request.getSession().getAttribute("loggedUser");
-		if(jobSeeker!=null)
-		{
-		academicDetailsValidator.validate(academicDetails, result);
-		if (result.hasErrors()) {
+		if (jobSeeker != null) {
+			academicDetailsValidator.validate(academicDetails, result);
+			if (result.hasErrors()) {
+				ModelAndView mv = new ModelAndView();
+				mv.addObject("academicDetails", academicDetails);
+				mv.setViewName("AcademicDetails");
+				return mv;
+			}
+			userDAO.addAcademicDetails(academicDetails, jobSeeker);
+			List list = userDAO.getAcademicDetails(jobSeeker);
 			ModelAndView mv = new ModelAndView();
-			mv.addObject("academicDetails", academicDetails);
-			mv.setViewName("AcademicDetails");
+			mv.addObject("academicDetailsList", list);
+			mv.setViewName("ViewAcademicDetails");
 			return mv;
-			// return "AcademicDetails";
-		}
-
-		//JobSeeker jobSeeker = (JobSeeker) request.getSession().getAttribute("loggedUser");
-		// System.out.println("Adding
-		// org:"+professionalDetails.getOrganizationName());
-		userDAO.addAcademicDetails(academicDetails, jobSeeker);
-		List list = userDAO.getAcademicDetails(jobSeeker);
-		/*
-		 * List list = userDAO.getAcademicDetailsList(jobSeeker); //return list;
-		 * ModelAndView mv= new ModelAndView();
-		 * mv.addObject("professionalDetailsList",list);
-		 * mv.setViewName("ViewProfessionalDetails"); return mv;
-		 */
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("academicDetailsList", list);
-		mv.setViewName("ViewAcademicDetails");
-		return mv;
-		}
-		else
-		{
+		} else {
 			ModelAndView mv = new ModelAndView();
-		//	mv.addObject("academicDetailsList", list);
 			mv.setViewName("JobSearchMain");
 			return mv;
-			
 		}
 	}
 

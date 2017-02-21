@@ -8,11 +8,10 @@ import javax.persistence.Table;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
- 
 
 @Entity
 @Table(name = "User")
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.JOINED)
 
 public class User {
 
@@ -38,6 +37,7 @@ public class User {
 
 	@Column(name = "emailAddress")
 	private String emailAddress;
+
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -96,25 +96,25 @@ public class User {
 
 	@Column(name = "addressLine1")
 	private String addressLine1;
-	
+
 	@Column(name = "addressLine2")
 	private String addressLine2;
-	
+
 	@Column(name = "city")
 	private String city;
-	
-	@Column(name="zipCode")
+
+	@Column(name = "zipCode")
 	private int zipCode;
-	
-	@Column(name="countryState")
+
+	@Column(name = "countryState")
 	private String countryState;
-	
+
 	@Column(name = "country")
 	private String country;
-	
-	@Column(name="homeCountryCode")
+
+	@Column(name = "homeCountryCode")
 	private int homeCountryCode;
-	
+
 	public int getHomeCountryCode() {
 		return homeCountryCode;
 	}
@@ -147,29 +147,28 @@ public class User {
 		this.officePhone = officePhone;
 	}
 
-	@Column(name="homePhone")
+	@Column(name = "homePhone")
 	private int homePhone;
-	
-	@Column(name="officeCountryCode")
+
+	@Column(name = "officeCountryCode")
 	private int officeCountryCode;
-	
-	@Column(name="officePhone")
+
+	@Column(name = "officePhone")
 	private int officePhone;
-	
-	public User()
-	{}
-	
-	public User(String firstName, String lastName, String userName, String password, String userType)
-	{
-		
-			this.firstName = firstName;
-			this.lastName = lastName;
-			this.userName = userName;
-			this.password = password;
-			this.userType = userType;
-		
+
+	public User() {
 	}
-	
+
+	public User(String firstName, String lastName, String userName, String password, String userType) {
+
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+		this.userType = userType;
+
+	}
+
 	public int getUserId() {
 		return userId;
 	}

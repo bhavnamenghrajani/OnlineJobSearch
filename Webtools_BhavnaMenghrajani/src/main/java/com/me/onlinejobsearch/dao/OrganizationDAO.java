@@ -9,17 +9,13 @@ import org.springframework.stereotype.Component;
 
 import com.me.onlinejobsearch.pojo.Organization;
 
-
-
 @Component
 public class OrganizationDAO extends DAO {
 
 	public void create(String organizationName, String organizationType) {
 		try {
 			begin();
-			System.out.println("inside DAO");
-
-			Organization organization = new Organization(organizationName,organizationType);
+			Organization organization = new Organization(organizationName, organizationType);
 			getSession().save(organization);
 
 			commit();
@@ -31,37 +27,34 @@ public class OrganizationDAO extends DAO {
 
 		}
 	}
-	
-	public Organization get(String orgName)
-             {
-        try {
-            begin();
-            Query q = getSession().createQuery("from Organization where organizationName = :orgName");
-            q.setString("orgName", orgName);
-            Organization org = (Organization) q.uniqueResult();
-            commit();
-            return org;
-        } catch (HibernateException e) {
-            rollback();
-           
-        }
-        return null;
-    }
-	
-	
-	 public List list()  {
-	        try {
-	            begin();
-	            Query q = getSession().createQuery("from Organization");
-	           List list =  q.list();
-	            commit();
-	            return list;
-	        } catch (HibernateException e) {
-	            rollback();
-	            return null;
-	            
-	        }
-	    }
-	
+
+	public Organization get(String orgName) {
+		try {
+			begin();
+			Query q = getSession().createQuery("from Organization where organizationName = :orgName");
+			q.setString("orgName", orgName);
+			Organization org = (Organization) q.uniqueResult();
+			commit();
+			return org;
+		} catch (HibernateException e) {
+			rollback();
+
+		}
+		return null;
+	}
+
+	public List list() {
+		try {
+			begin();
+			Query q = getSession().createQuery("from Organization");
+			List list = q.list();
+			commit();
+			return list;
+		} catch (HibernateException e) {
+			rollback();
+			return null;
+
+		}
+	}
 
 }

@@ -6,10 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ProfessionalDetailsContainer {
-
-	
 	private List<ProfessionalDetails> professionalDetailList = new ArrayList<ProfessionalDetails>();
-	
+
 	public List<ProfessionalDetails> getProfessionalDetailList() {
 		return professionalDetailList;
 	}
@@ -18,9 +16,6 @@ public class ProfessionalDetailsContainer {
 		this.professionalDetailList = professionalDetailList;
 	}
 
-	public ProfessionalDetailsContainer()
-	{
-		
-		
+	public ProfessionalDetailsContainer() {
 	}
 }

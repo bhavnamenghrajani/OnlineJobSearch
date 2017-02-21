@@ -31,8 +31,4 @@ public class AcademicDetailsValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "endYear", "error.invalid.endYear", "endYear Required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "graduated", "error.invalid.graduated", "This field is Required");
 	}
-	
-	
-	
-
 }
