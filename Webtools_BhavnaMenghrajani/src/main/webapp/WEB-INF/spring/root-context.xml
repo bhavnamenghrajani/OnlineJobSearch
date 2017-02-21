@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="userDAO" class="com.me.onlinejobsearch.dao.UserDAO"></bean>
+	<bean id="orgDAO" class="com.me.onlinejobsearch.dao.OrganizationDAO"></bean>
+	<bean id="empDAO" class="com.me.onlinejobsearch.dao.EmployerDAO"></bean>
+	<bean id="jobDAO" class="com.me.onlinejobsearch.dao.JobDAO"></bean>	
+	<bean id="userValidator" class="com.me.onlinejobsearch.controllers.UserValidator"></bean>
+	<bean id="academicDetailsValidator" class="com.me.onlinejobsearch.controllers.AcademicDetailsValidator"></bean>
+	<bean id="professionalDetailsValidator" class="com.me.onlinejobsearch.controllers.ProfessionalDetailsValidator"></bean>
+	
+</beans>
